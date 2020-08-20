@@ -48,9 +48,10 @@
               <span
                 class="flex items-center font-medium tracking-wide text-red-500 text-sm mt-1 ml-1"
                 v-if="stock === 0"
-                >La película no cuenta con unidades disponibles. Intente
-                nuevamente en unos minutos.</span
               >
+                La película no cuenta con unidades disponibles. Intente
+                nuevamente en unos minutos.
+              </span>
             </div>
           </div>
           <div class="reservation-form" v-if="stock > 0 && !reserved">
@@ -194,7 +195,6 @@ export default {
     getMovieCast(movie) {
       Tmdb.getMovieCredits(movie)
         .then(res => {
-          console.log(res);
           this.crew = res.crew.slice(0, 3);
           this.cast = res.cast.slice(0, 5);
         })
