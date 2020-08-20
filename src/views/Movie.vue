@@ -147,7 +147,7 @@ export default {
     return {
       movie: {},
       genres: "",
-      imgUrl: "https://image.tmdb.org/t/p/w500",
+      imgUrl: "",
       stock: 0,
       crew: {},
       cast: {},
@@ -207,9 +207,12 @@ export default {
   created() {
     Movies.getOne(this.$route.params.id)
       .then(res => {
+        this.movie = res.data;
         this.form.movie_id = this.movie.data.movie_id;
         this.stock += this.movie.data.attributes.stock;
-        this.imgUrl += this.movie.data.attributes.poster_path;
+        this.imgUrl =
+          "https://image.tmdb.org/t/p/w500" +
+          this.movie.data.attributes.poster_path;
 
         this.movie.data.attributes.genres.forEach(genre => {
           if (this.genres === "") {
@@ -218,8 +221,6 @@ export default {
             this.genres += ", " + genre.name;
           }
         });
-
-        this.movie = res.data;
 
         this.checkUserHasMovie(this.movie.data.movie_id);
         this.getMovieCast(this.movie.data.movie_id);
