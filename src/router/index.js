@@ -5,6 +5,7 @@ import Register from "../views/Register";
 import Login from "../views/Login";
 import Movie from "../views/Movie";
 import User from "../views/User";
+import NotFound from "../views/NotFound";
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,10 @@ const routes = [
     path: "/users/:id",
     name: "user",
     component: User
+  },
+  {
+    path: "/*",
+    component: NotFound
   }
 ];
 

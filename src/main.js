@@ -5,8 +5,6 @@ import router from "./router/";
 import store from "./store";
 import App from "./App";
 
-//axios.defaults.withCredentials = true;
-
 new Vue({
   router,
   store,

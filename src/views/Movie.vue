@@ -60,14 +60,15 @@
             </div>
             <div class="mt-2 flex">
               <div>
-                <VueTailwindPicker @change="v => (form.return_date = v)">
-                  <input
-                    type="text"
-                    name="return_date"
-                    v-model="form.return_date"
-                    class="text-black text-center rounded py-2 px-2 mr-6 text-gray-700 bg-gray-200"
-                  />
-                </VueTailwindPicker>
+                <date-picker
+                  v-model="form.return_date"
+                  :input-props="{
+                    class:
+                      'shadow appearance-none border rounded py-2 px-3 mr-4 text-gray-700 hover:border-blue-5',
+                    placeholder: 'Fecha de devolución',
+                    readonly: true
+                  }"
+                />
               </div>
               <button
                 class="flex inline-flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-2 hover:bg-orange-600 transition ease-in-out duration-150"
@@ -95,9 +96,9 @@
               role="alert"
               v-if="reserved"
             >
-              <strong class="font-bold">¡Pel&iacute;cula Reservada!</strong>
-              <span class="block sm:inline"
-                >Debes retornarla antes de {{ form.return_date }}</span
+              <strong class="font-bold">¡Pel&iacute;cula Reservada! </strong>
+              <span class="block sm:inline">
+                Debes retornarla antes de {{ form.return_date }}</span
               >
             </div>
           </div>
@@ -138,7 +139,7 @@ import Movies from "../apis/Movies";
 import Tmdb from "../apis/Tmdb";
 import Reservation from "../apis/Reservation";
 import TheHeader from "../components/TheHeader";
-import VueTailwindPicker from "vue-tailwind-picker";
+import DatePicker from "v-calendar/lib/components/date-picker.umd";
 
 export default {
   name: "Movie",
@@ -153,14 +154,14 @@ export default {
       cast: {},
       reserved: false,
       form: {
-        return_date: "",
+        return_date: new Date("YYYY-MM-DD"),
         movie_id: ""
       },
       errors: []
     };
   },
 
-  components: { TheHeader, VueTailwindPicker },
+  components: { TheHeader, DatePicker },
 
   methods: {
     reserve() {
