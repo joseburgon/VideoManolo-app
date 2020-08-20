@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="font-sans bg-gray-900 text-white py-4">
     <router-view></router-view>
   </main>
 </template>
