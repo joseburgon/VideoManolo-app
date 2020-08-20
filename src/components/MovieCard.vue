@@ -2,6 +2,7 @@
   <div class="mt-8">
     <router-link :to="{ name: 'movie', params: { id: movie.data.movie_id } }">
       <img
+        v-if="movie.data.attributes.poster_path !== null"
         :src="imgUrl"
         alt="poster"
         class="hover:opacity-75 transition ease-in-out duration-150"
@@ -47,7 +48,7 @@ export default {
 
   props: ["movie"],
 
-  mounted() {
+  created() {
     this.imgUrl +=
       "https://image.tmdb.org/t/p/w500" +
       this.movie.data.attributes.poster_path;

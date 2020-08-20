@@ -187,8 +187,8 @@ export default {
           this.reserved = res.data.result;
           this.form.return_date = res.data.reservation.return_date;
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
+          console.log("No return date");
         });
     },
 
