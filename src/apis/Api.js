@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let Api = axios.create({
-    baseURL: "https://video-manolo.herokuapp.com/api"
+  baseURL: process.env.VUE_APP_API_ROOT
 });
 
 Api.defaults.withCredentials = true;

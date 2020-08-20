@@ -5,9 +5,11 @@ import router from "./router/";
 import store from "./store";
 import App from "./App";
 
+axios.defaults.withCredentials = true;
+
 new Vue({
-    router,
-    store,
-    axios,
-    render: h => h(App)
+  router,
+  store,
+  axios,
+  render: h => h(App)
 }).$mount("#app");

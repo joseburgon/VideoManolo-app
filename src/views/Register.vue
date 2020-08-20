@@ -19,7 +19,8 @@
                   <span
                     class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                     v-if="errors.name"
-                  >{{ errors.name[0] }}</span>
+                    >{{ errors.name[0] }}</span
+                  >
                 </div>
                 <div class="py-1">
                   <span class="px-1 text-sm">Email</span>
@@ -32,7 +33,8 @@
                   <span
                     class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                     v-if="errors.email"
-                  >{{ errors.email[0] }}</span>
+                    >{{ errors.email[0] }}</span
+                  >
                 </div>
                 <div class="flex py-1">
                   <div class="mr-2">
@@ -46,7 +48,8 @@
                     <span
                       class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                       v-if="errors.identification"
-                    >{{ errors.identification[0] }}</span>
+                      >{{ errors.identification[0] }}</span
+                    >
                   </div>
                   <div class="ml-2">
                     <span class="px-1 text-sm">Celular</span>
@@ -59,7 +62,8 @@
                     <span
                       class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                       v-if="errors.phone"
-                    >{{ errors.phone[0] }}</span>
+                      >{{ errors.phone[0] }}</span
+                    >
                   </div>
                 </div>
                 <div class="py-1">
@@ -73,7 +77,8 @@
                   <span
                     class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                     v-if="errors.address"
-                  >{{ errors.address[0] }}</span>
+                    >{{ errors.address[0] }}</span
+                  >
                 </div>
                 <div class="py-1">
                   <span class="px-1 text-sm">Contraseña</span>
@@ -86,7 +91,8 @@
                   <span
                     class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                     v-if="errors.password"
-                  >{{ errors.password[0] }}</span>
+                    >{{ errors.password[0] }}</span
+                  >
                 </div>
                 <div class="py-1">
                   <span class="px-1 text-sm">Confirmar Contraseña</span>
@@ -99,18 +105,24 @@
                   <span
                     class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
                     v-if="errors.password_confirmation"
-                  >{{ errors.password_confirmation[0] }}</span>
+                    >{{ errors.password_confirmation[0] }}</span
+                  >
                 </div>
                 <button
                   @click.prevent="register"
                   class="mt-3 text-lg bg-orange-500 text-gray-900 rounded font-semibold w-full text-white px-6 py-3 block shadow-xl hover:bg-orange-600"
-                >Registrarme</button>
+                >
+                  Registrarme
+                </button>
               </div>
             </form>
 
             <div class="text-sm font-semibold block py-6 flex justify-center">
-              <router-link :to="{name: 'login'}">
-                <a class="font-normal border-b-2 border-gray-200 hover:border-teal-500" href="#">
+              <router-link :to="{ name: 'login' }">
+                <a
+                  class="font-normal border-b-2 border-gray-200 hover:border-teal-500"
+                  href="#"
+                >
                   ¿Ya eres miembro?
                   <span class="font-semibold">Login</span>
                 </a>
@@ -136,9 +148,9 @@ export default {
         phone: "",
         address: "",
         password: "",
-        password_confirmation: "",
+        password_confirmation: ""
       },
-      errors: [],
+      errors: []
     };
   },
 
@@ -148,15 +160,15 @@ export default {
         .then(() => {
           this.$router.push({
             name: "login",
-            query: { email: this.form.email },
+            query: { email: this.form.email }
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.status === 422) {
             this.errors = error.response.data.errors;
           }
         });
-    },
-  },
+    }
+  }
 };
 </script>
