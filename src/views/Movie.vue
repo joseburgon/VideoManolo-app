@@ -207,8 +207,6 @@ export default {
   created() {
     Movies.getOne(this.$route.params.id)
       .then(res => {
-        this.movie = res.data;
-
         this.form.movie_id = this.movie.data.movie_id;
         this.stock += this.movie.data.attributes.stock;
         this.imgUrl += this.movie.data.attributes.poster_path;
@@ -220,6 +218,8 @@ export default {
             this.genres += ", " + genre.name;
           }
         });
+
+        this.movie = res.data;
 
         this.checkUserHasMovie(this.movie.data.movie_id);
         this.getMovieCast(this.movie.data.movie_id);
